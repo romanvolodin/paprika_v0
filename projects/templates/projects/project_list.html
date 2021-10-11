@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container-fluid mt-3 d-flex">
+    {% for project in projects %}
+      <a class="col-2 mx-2" href="{{ project.code }}">
+        <div class="card">
+          <img class="card-img-top" src="{{project.preview.url}}" />
+          <div class="card-body p-1 ps-2">{{ project.title }}</div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}
