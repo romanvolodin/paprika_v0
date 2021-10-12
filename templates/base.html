@@ -14,10 +14,17 @@
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 me-auto h1">Paprika</span>
+      <div class="container-fluid mb-1">
+        <span class="navbar-brand">Paprika</span>
+        <nav class="me-auto">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Projects</a></li>
+            <li class="breadcrumb-item"><a href="#">ProjectName</a></li>
+            <li class="breadcrumb-item active">Shots</li>
+          </ol>
+        </nav>
         {% if user.is_authenticated %}
-          <ul class="navbar-nav mb-2 mb-lg-0">
+          <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
