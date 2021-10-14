@@ -2,13 +2,21 @@
 
 {% block content %}
   <div class="container-fluid mt-3 d-flex">
-    {% for project in projects %}
-      <a class="col-2 mx-2" href="{{ project.code }}">
-        <div class="card">
-          <img class="card-img-top" src="{{project.preview.url}}" />
-          <div class="card-body p-1 ps-2">{{ project.title }}</div>
-        </div>
-      </a>
-    {% endfor %}
+    <div class="row">
+      {% if not projects %}
+        <p>No project yet.</p>
+      {% else %}
+        {% for project in projects %}
+          <a class="text-decoration-none mb-3 pprk-card-width" href="{{ project.code }}/shots">
+            <div class="card">
+              <div class="overflow-hidden bg-secondary bg-opacity-10 pprk-card-height">
+                <img class="card-img-top" src="{{ project.preview.url }}" />
+              </div>
+              <div class="card-body p-1 ps-2">{{ project.title }}</div>
+            </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
   </div>
 {% endblock %}

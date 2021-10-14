@@ -1,0 +1,11 @@
+.pprk-card-width {
+  width: 240px !important;
+}
+
+.pprk-card-height {
+  height: 135px;
+}
+
+.pprk-cover {
+  object-fit: cover;
+}
