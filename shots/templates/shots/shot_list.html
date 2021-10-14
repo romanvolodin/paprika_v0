@@ -2,18 +2,24 @@
 
 {% block content %}
   <div class="container-fluid mt-3">
-    {% for shot_group in shot_groups %}
-      <div class="row mb-5">
-        <h2>{{ shot_group.title }}</h2>
-        {% for shot in shot_group.shots.all %}
-          <a class="text-decoration-none" style="width: 12.5%;" href="{{ shot.title }}">
-            <div class="card">
-              <!-- <img class="card-img-top" src="{{project.preview.url}}" /> -->
-              <div class="card-body p-1 ps-2">{{ shot.title }}</div>
-            </div>
-          </a>
-        {% endfor %}
-      </div>
-    {% endfor %}
+    {% if not shot_groups %}
+      <p>No shots yet.</p>
+    {% else %}
+      {% for shot_group in shot_groups %}
+        <div class="row mb-5">
+          <h2>{{ shot_group.title }}</h2>
+          {% for shot in shot_group.shots.all %}
+            <a class="text-decoration-none mb-3 pprk-card-width" href="{{ shot.title }}">
+              <div class="card">
+                <div class="overflow-hidden bg-secondary bg-opacity-10 pprk-card-height">
+                  <!-- <img class="card-img-top" src="..." /> -->
+                </div>
+                <div class="card-body p-1 ps-2">{{ shot.title }}</div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
   </div>
 {% endblock %}
