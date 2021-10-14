@@ -10,7 +10,9 @@
           <a class="text-decoration-none mb-3 pprk-card-width" href="{{ project.code }}/shots">
             <div class="card">
               <div class="overflow-hidden bg-secondary bg-opacity-10 pprk-card-height">
-                <img class="card-img-top" src="{{ project.preview.url }}" />
+                {% if project.preview %}
+                  <img class="card-img-top" src="{{ project.preview.url }}" />
+                {% endif %}
               </div>
               <div class="card-body p-1 ps-2">{{ project.title }}</div>
             </div>
