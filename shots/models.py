@@ -29,3 +29,22 @@ class Shot(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Version(models.Model):
+    title = models.CharField('Название версии', max_length=50)
+    shot = models.ForeignKey(
+        Shot,
+        on_delete=models.CASCADE,
+        related_name='versions'
+    )
+    video = models.FileField()
+    created_by = models.ForeignKey(
+        'users.User',
+        on_delete=models.CASCADE,
+        related_name='versions'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f'{self.shot.title} {self.title}'
