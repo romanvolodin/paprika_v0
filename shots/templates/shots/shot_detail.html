@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid mt-3">
+  {% if latest_version %}
+    <video class="w-75" src="{{ latest_version.video.url }}" controls loop></video>
+  {% endif %}
+  <div class="row mb-5">
+    {% for version in shot.versions.all %}
+      <a class="text-decoration-none mb-3 pprk-card-width" href="{{ version.title }}">
+        <div class="card">
+          <div class="overflow-hidden bg-secondary bg-opacity-10 pprk-card-height">
+            <!-- <img class="card-img-top" src="..." /> -->
+          </div>
+          <div class="card-body p-1 ps-2">{{ version }}</div>
+        </div>
+      </a>
+    {% empty %}
+      <p>No versions yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
