@@ -7,6 +7,12 @@ from .models import ShotGroup, Shot, Version
 admin.site.register(ShotGroup)
 admin.site.register(Version)
 
+
+class VersionInline(admin.TabularInline):
+    model = Version
+    show_change_link = True
+    extra = 0
+
 @admin.register(Shot)
 class ShotAdmin(admin.ModelAdmin):
     list_display = (
@@ -17,6 +23,7 @@ class ShotAdmin(admin.ModelAdmin):
         "get_latest_version",
     )
     list_filter = ("group__project", "group",)
+    inlines = (VersionInline,)
 
     @admin.display(description='Latest version')
     def get_latest_version(self, obj):
